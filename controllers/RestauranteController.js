@@ -17,6 +17,25 @@ const saveOne = (req, res) => {
     res.send("Restaurante agregado")
 }
 
+/**
+ * Devuelve el listado de todos los restaurantes...
+ */
+const getAll = (req, res) => {
+    res.json( restaurantes )
+}
+
+/**
+ * Devuelve el listado de todos los restaurantes que tengan el mismo atributo kingOfRestaurante
+ */
+const getAllByKing = (req, res) => {
+
+    let restaurantesSameKing = RestauranteService.getAllByKing(restaurantes, req.params.king)
+
+    res.json( restaurantesSameKing )
+}
+
 module.exports = {
-    saveOne
+    saveOne,
+    getAll,
+    getAllByKing
 }
